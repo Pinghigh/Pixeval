@@ -41,6 +41,7 @@ using Pixeval.CoreApi;
 using Pixeval.CoreApi.Net;
 using Pixeval.Database.Managers;
 using Pixeval.Download;
+using Pixeval.Interop;
 using Pixeval.Messages;
 using Pixeval.UserControls;
 using Pixeval.Util.IO;
@@ -56,6 +57,8 @@ public class AppViewModel : AutoActivateObservableRecipient,
     IRecipient<LoginCompletedMessage>
 {
     private bool _activatedByProtocol;
+
+    private static MicaBackground? _micaBackground;
 
     public AppViewModel(App app)
     {
@@ -127,6 +130,7 @@ public class AppViewModel : AutoActivateObservableRecipient,
             ApplicationTheme.SystemDefault => ElementTheme.Default,
             _ => throw new ArgumentOutOfRangeException(nameof(theme), theme, null)
         };
+        _micaBackground?.TrySetMicaBackdrop();
     }
 
     public void RootFrameNavigate(Type type, object parameter, NavigationTransitionInfo infoOverride)
@@ -226,6 +230,9 @@ public class AppViewModel : AutoActivateObservableRecipient,
         AppWindow.Resize(new SizeInt32(AppSetting.WindowWidth, AppSetting.WindowHeight));
         AppWindow.Show();
         AppWindow.SetIcon(await AppContext.GetIconAbsolutePath());
+
+        _micaBackground = new MicaBackground(Window);
+        var result = _micaBackground.TrySetMicaBackdrop();
 
         // Window.ExtendsContentIntoTitleBar = true;
         // Window.SetTitleBar(Window.CustomTitleBar);

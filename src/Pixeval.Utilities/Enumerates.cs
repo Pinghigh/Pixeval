@@ -221,6 +221,20 @@ public static class Enumerates
     {
         return enumerable.ContinueWith(t => t.Result.Select(selector));
     }
+
+    public static IEnumerable<(int index, T)> Indexed<T>(this IEnumerable<T> source)
+    {
+        var counter = 0;
+        foreach (var item in source)
+        {
+            yield return (counter++, item);
+        }
+    }
+
+    public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> source)
+    {
+        return source.SelectMany(Functions.Identity<IEnumerable<T>>());
+    }
 }
 
 [PublicAPI]

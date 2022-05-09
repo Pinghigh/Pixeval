@@ -32,8 +32,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.19041.22" RuntimeFrameworkVersion="10.0.19041.22" />
-		<Content Remove="Assets\Images\logo-no-caption.png" />
 		<Content Remove="Strings\zh-CN\BookmarksPage.resw" />
 		<Content Remove="Strings\zh-CN\IllustrationGridCommandBar.resw" />
 		<Content Remove="Strings\zh-CN\IllustrationInfoPage.resw" />
@@ -128,6 +126,9 @@
 		<None Remove="UserControls\CommentList.xaml" />
 		<None Remove="UserControls\IllustrationContainer.xaml" />
 		<None Remove="UserControls\IllustrationGridCommandBar.xaml" />
+		<None Remove="UserControls\JustifiedLayout\JustifiedListView.xaml" />
+		<None Remove="UserControls\JustifiedLayout\JustifiedListViewRow.xaml" />
+		<None Remove="UserControls\JustifiedLayout\JustifiedListViewRowItem.xaml" />
 		<None Remove="UserControls\OverlayPopupContent.xaml" />
 		<None Remove="UserControls\PixivReplyBar.xaml" />
 		<None Remove="UserControls\QrCodePresenter%27.xaml" />
@@ -140,26 +141,26 @@
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
-		<PackageReference Include="GitVersion.MsBuild" Version="5.8.1">
+		<PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="LiteDB" Version="5.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
 		<PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Toolkit.Diagnostics" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
 		<PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.5.21301.5" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22523-preview" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0-preview3" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.104" />
 		<PackageReference Include="Pixeval.QRCoder" Version="1.4.5" />
-		<PackageReference Include="ReverseMarkdown" Version="3.20.0" />
-		<PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
+		<PackageReference Include="ReverseMarkdown" Version="3.23.1" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="2.1.0" />
 		<PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta13" />
-		<PackageReference Include="System.Linq.Async" Version="5.1.0" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
@@ -295,6 +296,21 @@
 		<PRIResource Include="Strings\zh-CN\SettingsPage.resw" />
 		<PRIResource Include="Strings\zh-CN\SortOptionComboBox.resw" />
 		<PRIResource Include="Strings\zh-CN\TokenInputTextBox.resw" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="UserControls\JustifiedLayout\JustifiedListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="UserControls\JustifiedLayout\JustifiedListViewRow.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="UserControls\JustifiedLayout\JustifiedListViewRowItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Pages\Capability\SpotlightsPage.xaml">

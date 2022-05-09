@@ -308,22 +308,5 @@ internal class FeedEngine : AbstractPixivFetchEngine<Feed>
     /// <summary>
     ///     Required parameters established from multiple tests, I don't know what do they mean
     /// </summary>
-    private record FeedRequestContext
-    {
-        public FeedRequestContext(string unifyToken, string sid, string mode, bool isLastPage)
-        {
-            UnifyToken = unifyToken;
-            Sid = sid;
-            Mode = mode;
-            IsLastPage = isLastPage;
-        }
-
-        public string UnifyToken { get; }
-
-        public string Sid { get; }
-
-        public string Mode { get; }
-
-        public bool IsLastPage { get; }
-    }
+    private record FeedRequestContext(string UnifyToken, string Sid, string Mode, bool IsLastPage);
 }
