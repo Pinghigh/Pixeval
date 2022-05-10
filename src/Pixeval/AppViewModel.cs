@@ -131,6 +131,7 @@ public class AppViewModel : AutoActivateObservableRecipient,
             _ => throw new ArgumentOutOfRangeException(nameof(theme), theme, null)
         };
         _micaBackground?.TrySetMicaBackdrop();
+        _micaBackground?.SetMicaTitleBar();
     }
 
     public void RootFrameNavigate(Type type, object parameter, NavigationTransitionInfo infoOverride)
@@ -232,7 +233,8 @@ public class AppViewModel : AutoActivateObservableRecipient,
         AppWindow.SetIcon(await AppContext.GetIconAbsolutePath());
 
         _micaBackground = new MicaBackground(Window);
-        var result = _micaBackground.TrySetMicaBackdrop();
+        _micaBackground.TrySetMicaBackdrop();
+        _micaBackground.SetMicaTitleBar();
 
         // Window.ExtendsContentIntoTitleBar = true;
         // Window.SetTitleBar(Window.CustomTitleBar);

@@ -7,7 +7,6 @@
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                        xmlns:pages="using:Pixeval.Pages"
                        xmlns:ui="using:Pixeval.Util.UI"
-                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                        NavigationCacheMode="Required"
                        mc:Ignorable="d">
     <controls:EnhancedPage.Resources>

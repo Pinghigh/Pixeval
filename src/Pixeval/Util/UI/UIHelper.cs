@@ -42,6 +42,7 @@ using Pixeval.Util.IO;
 using Pixeval.Utilities;
 using QRCoder;
 using WinRT.Interop;
+using ApplicationTheme = Pixeval.Options.ApplicationTheme;
 
 namespace Pixeval.Util.UI;
 
@@ -272,5 +273,17 @@ public static partial class UIHelper
         };
         InitializeWithWindow.Initialize(openPicker, App.AppViewModel.GetMainWindowHandle());
         return openPicker.PickSingleFileAsync();
+    }
+
+    // ReSharper disable once InconsistentNaming
+    public static Microsoft.UI.Xaml.ApplicationTheme ToMUXApplicationTheme(this ApplicationTheme theme)
+    {
+        return theme switch
+        {
+            ApplicationTheme.Light => Microsoft.UI.Xaml.ApplicationTheme.Light,
+            ApplicationTheme.Dark => Microsoft.UI.Xaml.ApplicationTheme.Dark,
+            ApplicationTheme.SystemDefault => App.RequestedSystemDefaultStartupTheme,
+            _ => throw new ArgumentOutOfRangeException(nameof(theme), theme, null)
+        };
     }
 }

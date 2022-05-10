@@ -9,9 +9,7 @@
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                        xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
                        xmlns:ui="using:Pixeval.Util.UI"
-                       xmlns:util="using:Pixeval.Misc"
                        xmlns:attributes="using:Pixeval.Attributes"
-                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                        mc:Ignorable="d">
     <Grid Padding="20,0">
         <Grid.RowDefinitions>

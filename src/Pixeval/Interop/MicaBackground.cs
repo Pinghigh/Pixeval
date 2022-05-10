@@ -19,12 +19,24 @@
 #endregion
 
 using System;
+using System.Runtime.InteropServices;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
+using Pixeval.Util.UI;
 using WinRT;
 
 namespace Pixeval.Interop;
+
+
+// ReSharper disable InconsistentNaming
+// ReSharper disable IdentifierTypo
+[Flags]
+internal enum DwmWindowAttribute : uint
+{
+    DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
+    DWMWA_MICA_EFFECT = 1029
+}
 
 public class MicaBackground
 {
@@ -73,5 +85,16 @@ public class MicaBackground
     private void WindowOnActivated(object sender, WindowActivatedEventArgs args)
     {
         _backdropConfiguration.IsInputActive = args.WindowActivationState is not WindowActivationState.Deactivated;
+    }
+
+    [DllImport("dwmapi.dll")]
+    private static extern int DwmSetWindowAttribute(IntPtr hWnd, uint attr, ref int attrValue, int attrSize);
+
+    public void SetMicaTitleBar()
+    {
+        var isDarkMode = App.AppViewModel.AppSetting.Theme.ToMUXApplicationTheme() is ApplicationTheme.Dark;
+        var value = isDarkMode ? 0x01 : 0x00; // isDarkMode ? true : false
+        DwmSetWindowAttribute(_window.GetWindowHandle(), (uint) DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref value, Marshal.SizeOf<int>());
+        DwmSetWindowAttribute(_window.GetWindowHandle(), (uint) DwmWindowAttribute.DWMWA_MICA_EFFECT, ref value, Marshal.SizeOf<int>());
     }
 }

@@ -17,7 +17,6 @@
                        xmlns:system="using:System"
                        xmlns:tokenInput="using:Pixeval.UserControls.TokenInput"
                        xmlns:ui="using:Pixeval.Util.UI"
-                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                        Loaded="SettingsPage_OnLoaded"
                        mc:Ignorable="d">
     <Page.Resources>

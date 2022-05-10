@@ -35,10 +35,16 @@ public partial class App
 {
     private const string ApplicationWideFontKey = "ContentControlThemeFontFamily";
 
+    /**
+     * The theme that system requests when starting the app, i.e., the system default theme.
+     */
+    public static Microsoft.UI.Xaml.ApplicationTheme RequestedSystemDefaultStartupTheme { get; private set; }
+
     public App()
     {
         // The theme can only be changed in ctor
         AppViewModel = new AppViewModel(this) { AppSetting = AppContext.LoadConfiguration() ?? AppSetting.CreateDefault() };
+        RequestedSystemDefaultStartupTheme = RequestedTheme;
         RequestedTheme = AppViewModel.AppSetting.Theme switch
         {
             ApplicationTheme.Dark => Microsoft.UI.Xaml.ApplicationTheme.Dark,
